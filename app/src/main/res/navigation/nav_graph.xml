@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MainScreen">
+
+    <fragment
+        android:id="@+id/MainScreen"
+        android:name="com.srgnk.alarmclock_mvvm.views.MainScreen"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/action_MainScreen_to_AlarmScreen"
+            app:enterAnim="@anim/to_left_in"
+            app:exitAnim="@anim/to_left_out"
+            app:popEnterAnim="@anim/to_right_in"
+            app:popExitAnim="@anim/to_right_out"
+            app:destination="@+id/AlarmScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AlarmScreen"
+        android:name="com.srgnk.alarmclock_mvvm.views.AlarmScreen"
+        tools:layout="@layout/fragment_alarm">
+
+        <action
+            android:id="@+id/action_AlarmScreen_to_MainScreen"
+            app:destination="@+id/MainScreen" />
+    </fragment>
+</navigation>

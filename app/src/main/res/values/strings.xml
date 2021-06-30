@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Будильник</string>
+    <string name="delete_alarm">Удалить</string>
+    <string name="save_alarm">Сохранить</string>
+    <string name="alarm_saved">будильник сохранен</string>
+    <string name="alarm_deleted">будильник удален</string>
+    <string name="stop">STOP</string>
+    <string name="separator">:</string>
+</resources>
