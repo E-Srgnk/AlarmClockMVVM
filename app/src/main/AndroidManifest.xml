@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlarmClockMVVM">
         <activity
-            android:name=".AppActivity"
+            android:name=".ui.activities.AppActivity"
             android:theme="@style/Theme.AlarmClockMVVM.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".StopAlarmActivity"
+            android:name=".ui.activities.StopAlarmActivity"
             android:theme="@style/Theme.AlarmClockMVVM.NoActionBar" />
 
         <receiver android:name=".receivers.AlarmReceiver" />

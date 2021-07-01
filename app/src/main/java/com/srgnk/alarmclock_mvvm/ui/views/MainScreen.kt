@@ -1,4 +1,4 @@
-package com.srgnk.alarmclock_mvvm.views
+package com.srgnk.alarmclock_mvvm.ui.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.srgnk.alarmclock_mvvm.R
-import com.srgnk.alarmclock_mvvm.adapters.AlarmsAdapter
+import com.srgnk.alarmclock_mvvm.ui.adapters.AlarmsAdapter
 import com.srgnk.alarmclock_mvvm.databinding.FragmentMainBinding
 import com.srgnk.alarmclock_mvvm.utilities.ALARM_ID
 import com.srgnk.alarmclock_mvvm.viewmodels.AlarmsListViewModel
@@ -67,7 +67,7 @@ class MainScreen : Fragment(), AlarmsAdapter.ItemClickListener {
 
     override fun recyclerViewClickListener(view: View, alarmId: Long) {
         when (view.id) {
-            R.id.alarm -> navigateToAlarmScreen(alarmId)
+            R.id.main_layout -> navigateToAlarmScreen(alarmId)
             R.id.turn_alarm -> {
                 val isActive = (view as SwitchMaterial).isChecked
                 viewModel.changeAlarmActivity(alarmId, isActive)

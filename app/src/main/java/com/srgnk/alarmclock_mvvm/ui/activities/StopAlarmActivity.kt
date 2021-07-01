@@ -1,4 +1,4 @@
-package com.srgnk.alarmclock_mvvm
+package com.srgnk.alarmclock_mvvm.ui.activities
 
 import android.content.Context
 import android.content.Intent

@@ -3,7 +3,7 @@ package com.srgnk.alarmclock_mvvm.receivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.srgnk.alarmclock_mvvm.StopAlarmActivity
+import com.srgnk.alarmclock_mvvm.ui.activities.StopAlarmActivity
 import com.srgnk.alarmclock_mvvm.services.AlarmService
 import com.srgnk.alarmclock_mvvm.utilities.ALARM_TIME
 

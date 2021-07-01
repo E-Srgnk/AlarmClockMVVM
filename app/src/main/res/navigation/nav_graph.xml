@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MainScreen"
-        android:name="com.srgnk.alarmclock_mvvm.views.MainScreen"
+        android:name="com.srgnk.alarmclock_mvvm.ui.views.MainScreen"
         tools:layout="@layout/fragment_main">
 
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/AlarmScreen"
-        android:name="com.srgnk.alarmclock_mvvm.views.AlarmScreen"
+        android:name="com.srgnk.alarmclock_mvvm.ui.views.AlarmScreen"
         tools:layout="@layout/fragment_alarm">
 
         <action

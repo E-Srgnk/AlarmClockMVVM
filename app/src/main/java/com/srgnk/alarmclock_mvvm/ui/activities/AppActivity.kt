@@ -1,10 +1,11 @@
-package com.srgnk.alarmclock_mvvm
+package com.srgnk.alarmclock_mvvm.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import com.srgnk.alarmclock_mvvm.R
 import com.srgnk.alarmclock_mvvm.databinding.ActivityAppBinding
 import dagger.hilt.android.AndroidEntryPoint
 
