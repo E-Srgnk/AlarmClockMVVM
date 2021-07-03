@@ -1,13 +1,9 @@
 package com.srgnk.alarmclock_mvvm.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.srgnk.alarmclock_mvvm.data.Alarm
 import com.srgnk.alarmclock_mvvm.data.AlarmRepository
-import com.srgnk.alarmclock_mvvm.utilities.ALARM_ID
-import com.srgnk.alarmclock_mvvm.utilities.AlarmUtils
-import com.srgnk.alarmclock_mvvm.utilities.getHours
-import com.srgnk.alarmclock_mvvm.utilities.getMinutes
+import com.srgnk.alarmclock_mvvm.utilities.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.*
@@ -24,10 +20,11 @@ class AlarmViewModel @Inject constructor(
 
     private var id: Long = savedStateHandle.get<Long>(ALARM_ID) ?: 0L
 
-    var alarm: LiveData<Alarm> = MutableLiveData(Alarm(0, 0, 0, 0, true))
+    val alarm: LiveData<Alarm> = MutableLiveData(Alarm(0, 0, 0, 0, true))
 
+    val alarmState: MutableLiveData<AlarmState> = MutableLiveData()
 
-    fun initAlarm() {
+    fun fetchAlarm() {
         if (isNotNewAlarm()) {
             viewModelScope.launch {
                 val a = repository.getAlarmById(id)
@@ -70,20 +67,23 @@ class AlarmViewModel @Inject constructor(
 
             it.time = calendar.timeInMillis
             saveAlarm(it)
+            alarmUtils.setAlarmOn(it)
+
+            alarmState.postValue(AlarmState.ALARM_SAVED)
         }
     }
 
     private fun saveAlarm(alarm: Alarm) {
         viewModelScope.launch {
-            val idi = repository.insert(alarm)
-            Log.d("LOG_TAG", "save id -> $idi")
-            alarmUtils.setAlarmOn(alarm)
+            repository.insert(alarm)
         }
     }
 
     fun clickedDeleteAlarm() {
         deleteAlarm(id)
         alarmUtils.setAlarmOff(id)
+
+        alarmState.postValue(AlarmState.ALARM_DELETED)
     }
 
     private fun deleteAlarm(id: Long) {

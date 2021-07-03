@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.srgnk.alarmclock_mvvm.R
 import com.srgnk.alarmclock_mvvm.ui.activities.AppActivity
 import com.srgnk.alarmclock_mvvm.databinding.FragmentAlarmBinding
+import com.srgnk.alarmclock_mvvm.utilities.AlarmState
 import com.srgnk.alarmclock_mvvm.viewmodels.AlarmViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,9 +49,20 @@ class AlarmScreen : Fragment() {
             closeScreen()
         }
 
-        viewModel.initAlarm()
+        viewModel.fetchAlarm()
 
         binding.viewModel = viewModel
+
+        viewModel.alarmState.observe(viewLifecycleOwner) {
+            when (it) {
+                AlarmState.ALARM_SAVED -> showMessage(R.string.alarm_saved)
+                AlarmState.ALARM_DELETED -> showMessage(R.string.alarm_deleted)
+            }
+        }
+    }
+
+    private fun showMessage(message: Int) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun closeScreen() {
